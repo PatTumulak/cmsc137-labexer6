@@ -1,6 +1,29 @@
 <script>
     let simpleParityA = '';
 	let simpleParityB = '';
+
+	function isValidBinary(input) {
+		for (let i of input) {
+			if (i !== '0'&& i != '1') return false;
+		}
+		return true;
+	}
+
+	function handleClick() {
+		if (simpleParityB && simpleParityA) {
+			let inputValidityA = isValidBinary(simpleParityA) 
+				&& simpleParityA.length === 8 ? true : false;
+			let inputValidityB = isValidBinary(simpleParityB) 
+				&& simpleParityB.length === 9 ? true : false;
+
+			if (inputValidityA && inputValidityB) {
+				console.log(simpleParityA);
+				console.log(simpleParityB);
+			} else {
+				console.log('hatdog');
+			}
+		}
+	}
 </script>
 
 <div class="card">
@@ -13,7 +36,7 @@
     <p>Code Word (8-bit and Parity bit)</p>
     <input type="text" bind:value={simpleParityB}>
 
-    <button>Check</button>
+    <button on:click={handleClick}>Check</button>
 
     <p>Output</p>
     <p></p>
@@ -26,7 +49,12 @@
 		background-color: #e5f7f6;
 		padding: 16px;
 		border-radius: 20px;
-		max-height: 460px;
+		height: 400px;
+		box-shadow: 1px 3px 10px rgb(0 0 0 / 0.2);
+	}
+	
+	input {
+		border-radius: 5px;
 	}
 
     button {
@@ -34,6 +62,7 @@
 		width: 100px;
 		color: white;
 		background-color: #38B2AC;
+		border-radius: 7px;
 	}
 
 	button:hover {

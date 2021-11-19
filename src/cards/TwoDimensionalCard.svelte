@@ -22,7 +22,12 @@
 		background-color: #e5f7f6;
 		padding: 16px;
 		border-radius: 20px;
-		max-height: 460px;
+		height: 400px;
+		box-shadow: 1px 3px 10px rgb(0 0 0 / 0.2);
+	}
+
+	input {
+		border-radius: 5px;
 	}
 
     button {
@@ -30,6 +35,7 @@
 		width: 100px;
 		color: white;
 		background-color: #38B2AC;
+		border-radius: 7px;
 	}
 
 	button:hover {

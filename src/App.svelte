@@ -8,7 +8,7 @@
 <main>
 	<div class="header">
 		<h1>
-			Lab Exercise 7: Error Detection Techniques
+			Lab Exercise 6: Error Detection Techniques
 		</h1>
 		<h2>
 			Patricia Lexa U. Tumulak
@@ -49,14 +49,14 @@
 	.body {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		row-gap: 10px;
-		column-gap: 10px;
+		row-gap: 20px;
+		column-gap: 20px;
 	}
 
 	h1 {
 		color: #38B2AC;
 		font-size: 2em;
-		font-weight: 400;
+		font-weight: 500;
 	}
 
 	h2 {
