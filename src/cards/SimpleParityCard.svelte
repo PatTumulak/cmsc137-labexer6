@@ -96,7 +96,7 @@
 		background-color: #e5f7f6;
 		padding: 16px;
 		border-radius: 20px;
-		height: 400px;
+		height: 420px;
 		box-shadow: 1px 3px 10px rgb(0 0 0 / 0.2);
 	}
 	

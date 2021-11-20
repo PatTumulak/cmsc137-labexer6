@@ -25,18 +25,6 @@
 </main>
 
 <style>
-	/* // COLORS
-
-	// $primary: #0000;
-	// $secondary: #444F54;
-	// $tertiary: #72838C;
-	// $yellow: #F5C023;
-	// $violet: #8B02D3;
-	// $orange: #F4A259;
-	// $pink: #ED64A6;
-	// $teal: #38B2AC;
-	// $indigo: #667EEA; */
-
 	main {
 		margin: auto;
 		width: 50%;
@@ -51,6 +39,7 @@
 		grid-template-columns: 1fr 1fr;
 		row-gap: 20px;
 		column-gap: 20px;
+		padding: 20px 0 80px 0;
 	}
 
 	h1 {
