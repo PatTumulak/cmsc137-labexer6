@@ -1,8 +1,8 @@
 <script>
     let simpleParityA = '';
 	let simpleParityB = '';
-	let outputA = '';
-	let outputB = '';
+	$:outputA = '';
+	$:outputB = '';
 
 	function isValidBinary(input) {
 		for (let i of input) {
@@ -14,14 +14,17 @@
 	}
 
 	function generateParity(input) {
+		console.log('input', input)
 		let sum = 0;
 
-		for (let i of input) {
-			if (i === 1) {
+		for (var i of input) {
+			if (i === '1') {
 				sum++;
 			}
 		}
+		// console.log('sum', sum)
 		let parity = sum%2 === 0 ? '0' : '1';
+		// console.log('parity', parity);
 		return parity;
 	}
 
@@ -59,7 +62,7 @@
 
 				outputA = dataWord;
 				outputB = syndromeCheck === true ? simpleParityB.substring(
-					0, simpleParityB.length-2) : 'Discarded';
+					0, simpleParityB.length-1) : 'Discarded';
 
 				// console.log('parity', parityA);
 				// console.log(simpleParityA);
@@ -67,8 +70,12 @@
 				// console.log('output', outputA);
 				// console.log('output', outputB);
 			} else {
-				console.log('hatdog');
+				outputA = 'Invalid input';
+				outputB = 'Invalid input';
 			}
+		} else {
+			outputA = 'No input';
+			outputB = 'No input';
 		}
 	}
 </script>
@@ -84,9 +91,25 @@
     <input type="text" bind:value={simpleParityB}>
 
     <button on:click={handleClick}>Check</button>
-
-    <p>Output A: { outputA }</p>
-	<p>Output B: { outputB }</p>
+	
+	<div class="output">
+		<span class="output-row">
+			<p>Output A:</p> 
+			{#if outputA}
+				<p class="output-tag">{outputA}</p>
+			{:else}
+				<p></p>
+			{/if}
+		</span>
+		<span class="output-row">
+			<p>Output B:</p> 
+			{#if outputB}
+				<p class="output-tag">{outputB}</p>
+			{:else}
+				<p></p>
+			{/if}
+		</span>
+	</div>
 </div>
 
 <style>
@@ -96,7 +119,7 @@
 		background-color: #e5f7f6;
 		padding: 16px;
 		border-radius: 20px;
-		height: 420px;
+		height: 390px;
 		box-shadow: 1px 3px 10px rgb(0 0 0 / 0.2);
 	}
 	
@@ -115,5 +138,31 @@
 	button:hover {
 		cursor: pointer;
 		background-color: #57d1cb;
+	}
+
+	.output {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 5px;
+	}
+
+	.output-row {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		padding: 1px;
+	}
+
+	p {
+		margin: 0;
+		padding: 10px 0;
+	}
+	
+	.output-tag {
+		margin-left: 10px;
+		padding: 5px 10px;
+		border-radius: 6px;
+		background-color: aquamarine;
 	}
 </style>
