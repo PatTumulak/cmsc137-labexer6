@@ -25,6 +25,14 @@
 </main>
 
 <style>
+	:global(body) {
+		height: 100vh;
+		background-image: url("/assets/background.png");
+		background-attachment: fixed;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+	
 	main {
 		margin: auto;
 		width: 50%;
@@ -45,7 +53,7 @@
 	h1 {
 		color: #38B2AC;
 		font-size: 2em;
-		font-weight: 500;
+		font-weight: 600;
 	}
 
 	h2 {
