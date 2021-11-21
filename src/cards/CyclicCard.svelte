@@ -1,18 +1,92 @@
 <script>
     let cyclicInput = '';
+	let output = '';
+
+	function isValidBinary(input) {
+		for (let i of input) {
+			if (i !== '0'&& i != '1') {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	function xOR(remainder, divisor) {
+		let or = '';
+
+		for (let i = 0; i < 4; i++) {
+			if (remainder[i] != divisor[i]) {
+				or += '1';
+			} else {
+				or += '0';
+			}
+		}
+		return or.substring(1,4);
+	}
+
+	function getRemainder(input) {
+		return input.substring(input.length-3, input.length)
+	}
+
+	function getMessage(input) {
+		return input.substring(0, 4);
+	}
+
+	function divideMk(dividend) {
+		// won't be including the quotient since it is 
+		// not really needed for this operation
+		dividend += '000';
+		let divisor = '';
+		let remainder = dividend.substring(0, 3);
+
+		// starts at the 4th bit
+		for (let i = 3; i < 7; i++){
+			remainder += dividend[i];
+			divisor = remainder[0] === '0' ? '0000' : '1011';
+			remainder = xOR(remainder, divisor);
+		}
+
+		return remainder;
+	}
+
+	function handleClick() {
+		let isInputValid = cyclicInput.length === 7 && isValidBinary(cyclicInput);
+
+		if (isInputValid) {
+			let checkWord = getRemainder(cyclicInput);
+			let message = getMessage(cyclicInput);
+			let remainder = divideMk(message);
+
+			if (checkWord === remainder) {
+				output = 'Accept data';
+			} else {
+				output = 'CRC error detected';
+			}
+		} else {
+			output = 'Invalid input';
+		}
+	}
 </script>
 
 <div class="card">
 	<h3>
 		D. Cyclic Redundancy Check
 	</h3>
-	<p>Input A (7-bit)</p>
+	<p>Input (7-bit)</p>
 	<input type="text" bind:value={cyclicInput}>
 
-	<button>Check</button>
+	<button on:click={handleClick}>Check</button>
 
-	<p>Output</p>
-	<p></p>
+	<div class="output">
+		<span class="output-row">
+			<p>Output:</p> 
+			{#if output}
+				<p class="output-tag">{output}</p>
+			{:else}
+				<p></p>
+			{/if}
+		</span>
+	</div>
 </div>
 
 <style>

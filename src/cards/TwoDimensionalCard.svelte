@@ -6,7 +6,7 @@
     <h3>
         B. Two-dimensional Parity Check
     </h3>
-    <p>Input A (45-bit)</p>
+    <p>Input (45-bit)</p>
     <input type="text" bind:value={twoDime}>
 
     <button>Check</button>
