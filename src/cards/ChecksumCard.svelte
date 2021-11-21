@@ -65,22 +65,25 @@
 	}
 
 	function handleClick() {
-		let data = checksumInput.replace(/\s/g,'');
+		if (checksumInput) {
+			let data = checksumInput.replace(/\s/g,'');
+			let isInputValid = data.length === 40 && isValidBinary(data);
 
-		let isInputValid = data.length === 40 && isValidBinary(data);
+			if (isInputValid) {
+				let packets = separateWords(data);
+				packets = addPackets(packets);
+				packets = onesComplement(packets);
 
-		if (isInputValid) {
-			let packets = separateWords(data);
-			packets = addPackets(packets);
-			packets = onesComplement(packets);
-
-			if (packets === '00000000') {
-				output = 'Accept Data';
+				if (packets === '00000000') {
+					output = 'Accept Data';
+				} else {
+					output = 'Checksum error detected';
+				}
 			} else {
-				output = 'Checksum error detected';
+				output = 'Invalid input';
 			}
 		} else {
-			output = 'Invalid input';
+			output = 'No input';
 		}
 	}
 </script>

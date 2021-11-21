@@ -60,9 +60,10 @@
 				// compare
 				let syndromeCheck = checkSyndrome(simpleParityB);
 
-				outputA = dataWord;
-				outputB = syndromeCheck === true ? simpleParityB.substring(
-					0, simpleParityB.length-1) : 'Discarded';
+				outputA = '@Sender: ' + dataWord;
+				outputB = '@Receiver: ' + (syndromeCheck === true ? 
+					simpleParityB.substring(0, simpleParityB.length-1) : 
+					'Discarded');
 
 				// console.log('parity', parityA);
 				// console.log(simpleParityA);

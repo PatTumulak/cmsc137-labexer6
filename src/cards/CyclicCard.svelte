@@ -50,20 +50,24 @@
 	}
 
 	function handleClick() {
-		let isInputValid = cyclicInput.length === 7 && isValidBinary(cyclicInput);
+		if (cyclicInput) {
+			let isInputValid = cyclicInput.length === 7 && isValidBinary(cyclicInput);
 
-		if (isInputValid) {
-			let checkWord = getRemainder(cyclicInput);
-			let message = getMessage(cyclicInput);
-			let remainder = divideMk(message);
+			if (isInputValid) {
+				let checkWord = getRemainder(cyclicInput);
+				let message = getMessage(cyclicInput);
+				let remainder = divideMk(message);
 
-			if (checkWord === remainder) {
-				output = 'Accept data';
+				if (checkWord === remainder) {
+					output = 'Accept data';
+				} else {
+					output = 'CRC error detected';
+				}
 			} else {
-				output = 'CRC error detected';
+				output = 'Invalid input';
 			}
 		} else {
-			output = 'Invalid input';
+			output = 'No input';
 		}
 	}
 </script>
